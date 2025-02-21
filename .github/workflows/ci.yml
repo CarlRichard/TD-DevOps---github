@@ -9,8 +9,8 @@ on:
       - main
 
 env:
-  DEPLOY: "https://$PWD-3000.direct.labs.play-with-docker.com"
-  DOCKER_HOST: "tcp://$PWD.direct.labs.play-with-docker.com:2375"
+  DEPLOY: "https://${{ env.PWD }}-3000.direct.labs.play-with-docker.com"
+  DOCKER_HOST: "tcp://${{ env.PWD }}.direct.labs.play-with-docker.com:2375"
   DOCKER_DRIVER: overlay2
 
 jobs:
