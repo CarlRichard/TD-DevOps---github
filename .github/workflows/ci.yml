@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     container: node:20.9-alpine
     env:
-      PWD: ${{ vars.PWD }}  # Assurez-vous que cette variable est définie dans GitHub Secrets
+      PWD: ${{ vars.PWD }} 
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
@@ -93,7 +93,7 @@ jobs:
           docker compose -f compose.staging.yml down || true
           docker compose -f compose.staging.yml up -d
           echo "App deployed at => $DEPLOY"
-          docker logs td-devops-app-1 || true
+          docker logs td-devops-github-app-1 || true
           for i in {1..5}; do curl -k "$DEPLOY" && break || sleep 10; done || exit 1
 
   production:
@@ -113,5 +113,5 @@ jobs:
           docker network rm td-devops_default || true
           docker compose -f compose.prod.yml up -d
           echo "App deployed at => $DEPLOY"
-          docker logs td-devops-app-1 || true 
+          docker logs td-devops-github-app-1 || true 
           for i in {1..5}; do curl -k "$DEPLOY" && break || sleep 10; done || exit 1
