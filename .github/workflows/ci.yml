@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest 
     needs: test
     env:
-      PWD: ${{ secrets.PWD }}
+      PWD: ${{ secrets.PWD }} 
     steps:
       - uses: actions/checkout@v4
       - name: Build and push Docker image
